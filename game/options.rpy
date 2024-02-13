@@ -7,14 +7,14 @@
 # This file customizes what your mod is and and how it starts and builds!
 
 # This controls what your mod is called.
-define config.name = "DDLC Mod Template – Python 2 Edition"
+define config.name = "DDLC 中文 Mod 模板（重生版）"
 
 # This controls whether you want your mod name to show in the main menu.
 # If your mod name is big, it is suggested to turn this off.
 define gui.show_name = True
 
 # This controls the version number of your mod.
-define config.version = "4.2.3-Py2"
+define config.version = "4.2.3-Py2-zhReborn-p1"
 
 # This adds information about your mod in the About screen.
 # DDLC does not have a 'About' screen so you can leave this blank.
@@ -25,7 +25,7 @@ define gui.about = _("")
 # Note:
 #   The build name is ASCII only so no numbers, spaces, or semicolons.
 #   Example: Doki Doki Yuri Time to DokiDokiYuriTime
-define build.name = "DDLCModTemplateTwo-Py2"
+define build.name = "DDLCZHModTemplateReborn"
 
 # This configures whether your mod has sound effects.
 define config.has_sound = True
@@ -82,7 +82,7 @@ default preferences.sfx_volume = 0.75
 #   Windows: %AppData%/RenPy/
 #   macOS: $HOME/Library/RenPy/ (Un-hide the Library Folder)
 #   Linux: $HOME/.renpy/
-define config.save_directory = "DDLCModTemplateTwo"
+define config.save_directory = "DDLCZHModTemplateReborn-1705190400" # 1705190400 means 2024-01-14 08:00:00
 
 # This controls the window logo of your mod.
 define config.window_icon = "gui/window_icon.png"
@@ -178,6 +178,8 @@ init python:
     # to build your mod on Android like in this example.
     #   Example: build.classify("game/**.pdf", "scripts all")
     build.classify("game/mod_assets/**", "mod_assets all")
+    build.classify("game/gui/**", "mod_assets all") ## Native Ren'Py way support
+    build.classify("game/images/**", "mod_assets all") ## Native Ren'Py way support
     build.classify("game/presplash.png", "scripts all")
     build.classify("game/**.rpyc", "scripts all")
     build.classify("game/README.md", None)

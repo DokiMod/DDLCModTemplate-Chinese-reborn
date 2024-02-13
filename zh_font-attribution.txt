@@ -1,0 +1,37 @@
+DDLC 中文 Mod 模板使用了下列字体，在此鸣谢。
+
+sayori.ttf (851tegakizatsu): 
+8:51:22 pm
+License can be found at https://web.archive.org/web/20231007135959/https://pm85122.onamae.jp/851fontTerm.html
+
+natsuki.otf (Acy Font): 
+Copyright (c) 2019-2020, lxfly2000.
+Licensed under SIL Open Font License 1.1.
+
+monika.ttf (Yozai Font): 
+Copyright (c) 2020 LXGW, Copyright (c) Y.OzVox.
+Licensed under SIL Open Font License 1.1.
+
+yuri.ttf (霞鹜文楷 GB / LXGW WenKai GB):
+Copyright (c) 2022-2023 LXGW, Copyright (c) 2020 The Klee Project Authors.
+Licensed under SIL Open Font License 1.1.
+
+LXGWNeoXiHei.ttf (霞鹜新晰黑 / LXGW Neo XiHei):
+Copyright (c) 2021-2023 LXGW; Information-technology Promotion Agency, Japan (IPA), 2003-2019.
+Licensed under IPA Font License 1.0. (https://moji.or.jp/ipafont/license/ or http://opensource.org/license/ipa)
+
+sourcehanserif.otf (Source Han Serif CN):
+Copyright (c) 2017 Adobe Systems Incorporated.
+Licensed under SIL Open Font License 1.1.
+
+zcoolkuaile-2016.ttf (站酷快乐体 / ZCOOL Kuaile):
+Copyright (c) 2016 刘兵克 (Liu Bingke)
+Licensed under SIL Open Font License 1.1.
+
+zcoolkuaile-ossfix.ttf (站酷快乐体 / ZCOOL Kuaile):
+Copyright (c) 2018 The ZCOOL KuaiLe Project Authors.
+Licensed under SIL Open Font License 1.1.
+
+zhushi.ttf (杨任东竹石体 / YRDZST):
+Copyright (c) 2017 杨任东字体
+License can be found at https://mp.weixin.qq.com/s/7kv3i_YEs7x9_9IrCDYvBA

@@ -5,13 +5,13 @@
 
 label start:
 
-    # This label configures the anticheat number for the game after Act 1.
-    # It is recommended to leave this as-is and use the following in your script:
+    # 该变量控制一周目之后的反作弊 ID。
+    # 不建议变更本行代码。请考虑在你的游戏剧情脚本里使用下方代码：
     #   $ persistent.anticheat = renpy.random.randint(X, Y) 
-    #   X - The minimum number | Y - The maximum number
+    #   X - 最小值 | Y - 最大值
     $ anticheat = persistent.anticheat
 
-    # This variable sets the chapter number to 0 to use in the mod.
+    # 该变量将章节数字设置为 0，以供模组使用。
     $ chapter = 0
 
     # This variable controls whether the player can dismiss a pause in-game.
@@ -23,9 +23,9 @@ label start:
     #   $ mi_name = "Mike". 
     # Don't forget to add the character to 'definitions.rpy'!
     $ s_name = "???"
-    $ m_name = "Girl 3"
-    $ n_name = "Girl 2"
-    $ y_name = "Girl 1"
+    $ m_name = "女孩 3"
+    $ n_name = "女孩 2"
+    $ y_name = "女孩 1"
 
     # This variable controls whether the quick menu in the textbox is enabled.
     $ quick_menu = True
@@ -47,7 +47,7 @@ label start:
     # 'persistent.playthrough' controls the playthrough number the player is on i.e (Act 1, 2, 3, 4)
 
     # REMOVE THIS LINE WHEN YOU HAVE MADE A STORY SCRIPT FILE AND CALLED IT HERE
-    call screen dialog(message="It seems that you are trying to run the mod template as a new game with no story.\nThis is a template, not an actual mod. Please code a story for your mod, call it in \'script.rpy\', and try again.", ok_action=MainMenu(confirm=False))
+    call screen dialog(message="您似乎在尝试直接将模组开发模板作为无故事剧情的新游戏运行。\n这是一个模组开发模板，而不是一个实际的模组。请为您的模组编写故事，并在“script.rpy”中调用（call）脚本后重试。", ok_action=MainMenu(confirm=False))
 
     ## Example on calling scripts from DDLC.
     # if persistent.playthrough == 0:

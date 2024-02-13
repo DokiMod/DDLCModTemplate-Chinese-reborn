@@ -25,12 +25,12 @@ init -100 python:
 init python:
     # This variable is the default splash message that people will see when
     # the game launches.
-    splash_message_default = "This game is an unofficial fan game that is unaffiliated with Team Salvato."
+    splash_message_default = "本游戏为非官方性质的饭制游戏，与 Team Salvato 无关。"
     # This array variable stores different kinds of splash messages you can use
     # to show to the player on startup.
     splash_messages = [
-        "Please support Doki Doki Literature Club.",
-        "Monika is watching you code."
+        "文学部需要你的支持。",
+        "莫妮卡在看着代码哦。"
     ]
 
     ### New in 3.0.0
@@ -328,20 +328,20 @@ label splashscreen:
         scene black
 
         menu:
-            "A previous save file has been found. Would you like to delete your save data and start over?"
-            "Yes, delete my existing data.":
-                "Deleting save data...{nw}"
+            "检测到先前的存档文件，请问您希望删除存档数据并重新开始游玩吗？"
+            "是，删除现有存档数据。":
+                "正在删除存档数据...{nw}"
                 python:
                     delete_all_saves()
                     renpy.loadsave.location.unlink_persistent()
                     renpy.persistent.should_save_persistent = False
                     renpy.utter_restart()
-            "No, continue where I left off.":
+            "不，请从我上次游玩的地方继续。":
                 $ restore_relevant_characters()
 
     if renpy.version_tuple == (6, 99, 12, 4, 2187) and not renpy.get_autoreload():
         if os.path.exists(config.gamedir + "/definitions/splash.rpy"):
-            "{b}Warning:{/b} You are running the DDLC Mod Template on a version of Ren'Py that may be depreciated in the near future."
+            "{b}警告：{/b} You are running the DDLC Mod Template on a version of Ren'Py that may be depreciated in the near future."
             "Mod Template development has been focused to support DDLC on either Ren'Py 7 and Ren'Py 8."
             "While this template supports the current Ren'Py version, this may not be the case in the near future."
             "It is highly recommended that you upgrade to Ren'Py 7 to continue mod development. More information can be found [here](https://www.reddit.com/r/DDLCMods/wiki/notices/#wiki_why_is_the_megathread_and_other_users_recommending_me_to_create_my_mod_in_ren.27py_7.3F)."
@@ -375,27 +375,29 @@ label splashscreen:
         ## unaffiliated with Team Salvato, requires that the player must 
         ## finish DDLC before playing, has spoilers for DDLC, and where to 
         ## get DDLC's files."
-        "[config.name] is a Doki Doki Literature Club fan mod that is not affiliated in anyway with Team Salvato."
-        "It is designed to be played only after the official game has been completed, and contains spoilers for the official game."
-        "Game files for Doki Doki Literature Club are required to play this mod and can be downloaded for free at: https://ddlc.moe or on Steam."
+        "[config.name] 是 Doki Doki Literature Club 的饭制模组，与 Team Salvato 完全无关。"
+        "本模组需要在通关原版游戏后再进行游玩，且本模组包含原版游戏的剧透。"
+        "游玩本模组需要原版 Doki Doki Literature Club 的文件。您可以在 {a=https://ddlc.moe}https://ddlc.moe{/a} 或者 Steam 免费获取。"
 
         menu:
-            "By playing [config.name] you agree that you have completed Doki Doki Literature Club and accept any spoilers contained within."
-            "I agree.":
+            "如果继续游玩 [config.name] 将视为你已经通关原版游戏，并接受任何剧透内容。"
+            "我同意。":
                 pass
+            "我不同意，退出。": # 保持经典一致性
+                $ renpy.quit()
 
         $ persistent.first_run = True
         scene tos2
         with Dissolve(1.5)
         pause 1.0
 
-        ## This if statement checks if we are running any common streaming/recording 
-        ## software so the game can enable Let's Play Mode automatically and notify
-        ## the user about it if extra settings are enabled.
+        ## （需要启用额外选项）自动检测设备是否正在运行直播 / 录屏类软件，并自动切换到实况共玩模式，
+        ## 提醒用户已经启用该模式。基于原版模板加大了覆盖范围。
+        ## （该模式无法解除 DDLC 在中国大陆的屏蔽）
         if extra_settings:
-            if process_check(["obs32.exe", "obs64.exe", "obs.exe", "xsplit.core.exe", "livehime.exe", "pandatool.exe", "yymixer.exe", "douyutool.exe", "huomaotool.exe"]):
+            if process_check(["obs32.exe", "obs64.exe", "obs.exe", "xsplit.core.exe", "livehime.exe", "pandatool.exe", "yymixer.exe", "douyutool.exe", "huomaotool.exe", "dytool.exe", "twitchstudio.exe", "gamecaster.exe", "evcapture.exe", "kk.exe", "streamlabs obs.exe"]):
                 $ persistent.lets_play = True
-                call screen dialog("Let's Play Mode has been enabled automatically.\nThis mode allows you to skip content that\ncontains sensitive information or apply alternative\nstory options.\n\nThis setting will be dependent on the modder\nif they programmed these checks in their story.\n\n To turn off Let's Play Mode, visit Settings and\nuncheck Let's Play Mode.", 
+                call screen dialog("实况共玩模式已自动启用。\n该模式允许你跳过包含敏感内容的内容，同时也可以提供备选故事方案。\n设置可用性取决于模组开发者是否在故事线中进行了相应配置。\n\n如需关闭实况共玩模式，请前往设置，并取消选择“实况共玩模式”。\n请注意：实况共玩模式无法改变 DDLC 在中国大陆的屏蔽现状，\n请始终避免在中国大陆平台发布 / 直播与 DDLC 有关的内容。\n同时，无论如何，请注意安全。", 
                     [Hide("dialog"), Return()])
         scene white
 
@@ -611,19 +613,19 @@ label after_load:
     if anticheat != persistent.anticheat:
         stop music
         scene black
-        "The save file could not be loaded."
-        "Are you trying to cheat?"
-        $ m_name = "Monika"
+        "存档文件加载失败。"
+        "您是不是想作弊呢？"
+        $ m_name = "莫妮卡"
         show monika 1 at t11
         if persistent.playername == "":
-            m "You're so funny."
+            m "真有意思啊。"
         else:
-            m "You're so funny, [persistent.playername]."
+            m "真有意思啊，[persistent.playername]。"
         $ renpy.utter_restart()
     else:
         if persistent.playthrough == 0 and not persistent.first_load and not config.developer:
             $ persistent.first_load = True
-            call screen dialog("Hint: You can use the \"Skip\" button to\nfast-forward through text you've already read.", ok_action=Return())
+            call screen dialog("提示：您可以使用“快进”按钮来快速跳过您阅读过的文字。", ok_action=Return())
     return
 
 ## This label loads the label saved in the autoload variable. 
@@ -677,7 +679,7 @@ label autoload:
 ## This label sets the main menu music to Doki Doki Literature Club before the
 ## menu starts.
 label before_main_menu:
-    $ config.main_menu_music = audio.t1
+    # $ config.main_menu_music = audio.t1
     return
 
 ## This label is a left-over from DDLC's development that quits the game but shows
